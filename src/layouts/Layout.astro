@@ -1,4 +1,7 @@
 ---
+import '@fontsource-variable/signika'
+import '@fontsource-variable/source-sans-3'
+
 import { ViewTransitions } from 'astro:transitions';
 import { fade } from 'astro:transitions';
 import Header from '../components/Header.astro';
@@ -7,16 +10,14 @@ import '../styles/global.css';
 const { pageTitle } = Astro.props;
 ---
 <!DOCTYPE html>
-<html transition:animate="none" lang="en">
+<html transition:animate="none" lang="de">
 	<head>
         <meta charset="utf-8" />
-        <meta name="description" content="Astro description">
+        <meta name="description" content="Klüterraum Papenburg e.V. - Ein Makerspace in Papenburg">
+
         <meta name="viewport" content="width=device-width" />
         <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
-        <link rel="preconnect" href="https://fonts.googleapis.com">
-        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-        <link rel="preload" href="https://fonts.googleapis.com/css2?family=Josefin+Sans&family=Pacifico&display=swap" as="style">
-        <link href="https://fonts.googleapis.com/css2?family=Josefin+Sans&family=Pacifico&display=swap" rel="stylesheet">       
+
         <meta name="generator" content={Astro.generator} />
         <title>{pageTitle}</title>
         <ViewTransitions />
@@ -24,9 +25,11 @@ const { pageTitle } = Astro.props;
 	<body>
         <Header />
         <main transition:animate={fade({ duration: '0.2s' })} >
-	    <slot />
-            <Footer />
+	        <slot />
         </main>
+        <Footer />
+
+
         <script>
             function colorMode() {
                 if (
@@ -39,10 +42,9 @@ const { pageTitle } = Astro.props;
                     document.documentElement.classList.remove("light");
                 }
               }
-            
+
             colorMode();
             document.addEventListener('astro:after-swap', colorMode);
         </script>
 	</body>
 </html>
-

@@ -1,14 +1,18 @@
 /* Global styles */
 :root {
-    --background: #1e1e2e; 
-    --background-light: #fdebf3;
+    --background: #4c4d78;
+    --background-light: #fff5e0;
     --button: #78c2ad;
-    --text: #fdebf3;
-    --text-light: #1e1e2e; 
+    --text: #fff5e0;
+    --text-light: #101019;
     --text-link: #78c2ad;
-    --underline: #375a7f;
-    --header: 'Pacifico', cursive;
-    --body: 'Josefin Sans', sans-serif; 
+    --underline: #2c7c79;
+    --header: 'Signika Variable', sans-serif;
+    --body: 'Source Sans 3 Variable', sans-serif;
+}
+
+footer {
+    background-color: #4c4d78;
 }
 
 html {
@@ -16,13 +20,13 @@ html {
     color: var(--text);
 }
 
-body {
-    max-width: 540px;
+main, header {
+    max-width: 640px;
     margin: 0 auto;
     text-align: justify;
 }
 
-h1, h2 {
+h1, h2, h3 {
     font-family: var(--header);
     font-weight: normal;
 }
@@ -41,16 +45,24 @@ h2 {
     margin-bottom: 0;
 }
 
+
+h3 {
+    text-decoration: underline var(--underline);
+    text-decoration-thickness: 4px;
+    text-underline-offset: 6px;
+    font-size: 1.3rem;
+    margin-bottom: 0;
+}
+
 p {
     font-family: var(--body);
     font-size: 1.1rem;
     hyphens: auto;
     line-height: 1.5;
-    text-indent: 1rem;
 }
 
 small, li {
-    font-family: var(--body); 
+    font-family: var(--body);
 }
 
 /* Navigation Bar */
@@ -194,15 +206,6 @@ small, li {
     cursor: pointer;
 }
 
-/* Skills */
-.skills {
-    margin-top: 8px;
-}
-
-.skills__img {
-    margin: 8px 4px;
-}
-
 /* Items */
 .center {
     text-align: center;
@@ -298,11 +301,11 @@ html.light {
 }
 
 .light .card__title {
-    color: var(--text-light); 
+    color: var(--text-light);
 }
 
 .light .card__txt {
-    color: var(--text-light); 
+    color: var(--text-light);
 }
 
 .light .btn {
@@ -375,4 +378,3 @@ html.light {
         width: 350px;
     }
 }
-

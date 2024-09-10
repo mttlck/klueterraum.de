@@ -1,0 +1,84 @@
+title: Page
+tabs:
+  main:
+    display: Main
+    sections:
+      -
+        fields:
+          -
+            handle: title
+            field:
+              type: text
+              required: true
+              character_limit: 0
+              display: Title
+              validate:
+                - required
+          -
+            handle: content
+            field:
+              remove_empty_nodes: false
+              type: bard
+              display: Content
+              word_count: true
+              link_collections:
+                - articles
+                - pages
+              container: assets
+              sets:
+                default:
+                  display: Default
+                  sets:
+                    people:
+                      display: People
+                      fields:
+                        -
+                          handle: people
+                          field:
+                            collections:
+                              - people
+                            type: entries
+                            display: People
+                    gallery:
+                      display: Gallery
+                      fields:
+                        -
+                          handle: images
+                          field:
+                            min_files: 1
+                            container: assets
+                            type: assets
+                            display: Images
+                            mode: grid
+  sidebar:
+    display: Sidebar
+    sections:
+      -
+        fields:
+          -
+            handle: slug
+            field:
+              type: slug
+              localizable: true
+              validate: 'max:200'
+          -
+            handle: parent
+            field:
+              type: entries
+              collections:
+                - pages
+              max_items: 1
+              listable: false
+              localizable: true
+          -
+            handle: template
+            field:
+              type: template
+              display: Template
+          -
+            handle: show_menu
+            field:
+              default: true
+              type: toggle
+              display: 'Show in menu'
+              listable: true

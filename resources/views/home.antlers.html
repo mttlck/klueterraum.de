@@ -1,0 +1,27 @@
+<div class="max-w-5xl mx-auto relative py-16 lg:pt-40 lg:pb-16">
+    <article class="content">
+        <p class="font-medium text-lg text-teal">{{ subtitle }}</p>
+        <h1>{{ content }}</h1>
+    </article>
+</div>
+
+    {{ partial:components/next-events }}
+
+<div class="max-w-2xl mx-auto mb-16">
+    {{ collection:articles limit="5" as="articles" }}
+
+        {{ articles }}
+            <div class="mb-16">
+                <h2 class="mb-4">
+                    <a preload href="{{ url | ensure_right('/') }}" class="text-2xl hover:text-teal tracking-tight leading-tight font-bold">
+                        {{ title | widont }}
+                    </a>
+                </h2>
+                <p class="text-gray-600">
+                    <span class="text-gray-800 text-sm uppercase tracking-widest font-medium">{{ date | format('d.m.Y')  }}</span> &mdash;
+                    {{ excerpt | widont ?? content | strip_tags | safe_truncate(150, '...') }}
+                </p>
+            </div>
+        {{ /articles }}
+    {{ /collection:articles }}
+</div>

@@ -1,0 +1,19 @@
+title: Settings
+data:
+  site_name: 'Klüterraum Papenburg e.V.'
+  social:
+    -
+      id: Q2qZEU52
+      name: Email
+      url: 'mailto:vorstand@klueterraum.de'
+      icon: site/social-icons/email.svg
+    -
+      id: YvrhkxXE
+      name: Github
+      url: 'https://github.com/KlueterRaum'
+      icon: site/social-icons/github.svg
+    -
+      id: lwsb9vmv
+      name: Instagram
+      url: 'https://www.instagram.com/klueterraum/'
+      icon: site/social-icons/instagram.svg

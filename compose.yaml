@@ -1,0 +1,14 @@
+services:
+    analytics:
+
+    analytics_events:
+        image: clickhouse/clickhouse-server:24.3.3.102-alpine
+
+    tiles:
+        image: ghcr.io/maplibre/martin:v0.13.0
+        restart: unless-stopped
+
+    database:
+
+volumes:
+    mbtiles:

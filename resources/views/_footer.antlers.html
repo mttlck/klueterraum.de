@@ -1,0 +1,19 @@
+<nav class="flex items-center justify-between flex-wrap py-12 lg:py-24 max-w-5xl mx-auto">
+    <div class="text-sm">&copy; {{ now format="Y" }} {{ settings:site_name }}</div>
+    <div class="flex items-center">
+        {{ nav:footer }}
+        <a preload href="{{ url | ensure_right('/') }}" class="block  mt-4 lg:inline-block text-gray-600 hover:text-gray-800 lg:mt-0 mr-12">
+            {{ title }}
+        </a>
+        {{ /nav:footer }}
+        <div class="flex-1"></div>
+
+        {{ settings:social }}
+            <a href="{{ url }}" class="ml-4" aria-label="{{ name }}" rel="noopener">
+                {{ svg :src="icon" class="h-6 w-6 hover:text-teal" }}
+            </a>
+        {{ /settings:social }}
+
+
+    </div>
+</nav>

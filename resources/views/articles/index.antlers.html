@@ -1,0 +1,34 @@
+<div class="max-w-5xl mx-auto relative mt-16">
+
+    <article class="py-32 max-w-2xl mx-auto">
+        <header class="content mb-16">
+            <h1>{{ title }}</h1>
+            {{ content | raw | bard_html | widont }}
+        </header>
+
+        {{ collection:articles as="articles" paginate="10" }}
+
+        {{ articles }}
+        <div class="flex items-baseline gap-3 mb-6">
+            <div class="bg-gray-800 inline-block text-sm px-3 uppercase tracking-widest text-white rounded-full">{{ date | format="d.m.Y"}}: </div>
+            <a href="{{ url | ensure_right('/') }}" class="text-lg hover:text-teal tracking-tight leading-tight font-bold">
+                {{ title | widont }}
+            </a>
+        </div>
+        {{ /articles }}
+
+        {{ paginate }}
+        {{ if prev_page || next_page }}
+        <div class="flex justify-between text-xl -mx-16 pt-16 font-bold">
+            <a href="{{ prev_page | ensure_right('/') }}" class="{{ ! prev_page ?= 'opacity-25' }}">
+                &larr; Zurück
+            </a>
+            <a href="{{ next_page | ensure_right('/') }}">
+                Weiter &rarr;
+            </a>
+        </div>
+        {{ /if }}
+        {{ /paginate }}
+        {{ /collection:articles }}
+    </article>
+</div>

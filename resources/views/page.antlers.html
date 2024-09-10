@@ -1,0 +1,47 @@
+<div hx-boost="false" class="max-w-5xl mx-auto relative mt-16 content">
+    <article class="py-32 max-w-2xl mx-auto content">
+        <h1>{{ title }}</h1>
+        {{ content }}
+
+            {{ if type === "text" }}
+                {{ text }}
+
+            {{ elseif type === "people"}}
+
+                <div class="flex gap-10 flex-col md:flex-row">
+                    {{ people }}
+                        <div class="flex-1">
+                            <div class="flex gap-5">
+                                <div class="w-24">
+                                    <img alt="" class="m-0 rounded-full" src="{{ glide :src='image' width='256' height='256' }}" >
+                                </div>
+                                <div class="flex flex-col justify-center flex-1">
+                                    <h3 class="font-bold text-xl">{{ title }}</h3>
+                                    <p>{{ role }}</p>
+                                </div>
+                            </div>
+                            <div class="mt-5">
+                                {{ content }}
+                            </div>
+                        </div>
+
+
+                    {{ /people }}
+
+                </div>
+            {{ elseif type === "gallery"}}
+
+
+                <div class="grid grid-cols-2 md:grid-cols-3 gap-5">
+                    {{images}}
+                        <img alt="" class="m-0 aspect-[3/2] object-cover rounded-md" src=" {{ glide :src="url" width="300" height="200" fit="crop_focal" }}" >
+
+                    {{/images}}
+
+
+                </div>
+
+            {{ endif }}
+        {{ /content}}
+    </article>
+</div>

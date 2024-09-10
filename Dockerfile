@@ -33,12 +33,8 @@ RUN composer install --no-interaction --no-dev --classmap-authoritative \
     && php artisan config:clear \
     && php artisan clear-compiled \
     && php artisan package:discover \
-    && php artisan optimize \
-    && php artisan event:cache \
-    && php artisan view:cache \
-    && php please stache:warm \
     && composer clear-cache
 
-RUN npm ci --no-cache && rm -rf node_modules
+RUN npm ci --no-cache && npm run build && rm -rf node_modules
 
 USER root

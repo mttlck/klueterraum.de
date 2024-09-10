@@ -1,0 +1,20 @@
+# development files
+node_modules
+vendor
+public/build
+
+# cache
+bootstrap/cache/*.php
+
+# dev
+.env
+.env.example
+.git
+.gitignore
+.editorconfig
+Dockerfile
+docker-compose.yml
+compose.*.yml
+Procfile
+
+**/.DS_Store

@@ -1,2 +1,2 @@
 web: php artisan serve
-vite: bun run dev
+vite: npm run dev

@@ -1,0 +1,74 @@
+{
+    "settings": {
+        "http": {
+            "server_version": false
+        }
+    },
+    "listeners": {
+        "*:8000": {
+            "pass": "routes"
+        }
+    },
+    "routes": [
+        {
+            "match": {
+                "uri": "/robots.txt"
+            },
+            "action": {
+                "share": "/var/www/html/public$uri",
+                "response_headers": {
+                    "Cache-Control": "no-cache"
+                }
+            }
+        },
+        {
+            "match": {
+                "uri": ["/cp/*", "/live/*", "/horizon/*", "/telescope/*"]
+            },
+            "action": {
+                "pass": "applications/statamic",
+                "response_headers": {
+                    "X-Robots-Tags": "noindex"
+                }
+            }
+        },
+        {
+            "match": {
+                "uri": "!/index.php"
+            },
+            "action": {
+                "share": "/var/www/html/public$uri",
+                "response_headers": {
+                    "Cache-Control": "public, max-age=31536000",
+                    "X-Robots-Tags": "noindex"
+                },
+                "fallback": {
+                    "pass": "applications/statamic",
+                    "response_headers": {
+                        "Cache-Control": "public, max-age=3600, stale-while-revalidate=46800"
+                    }
+                }
+            }
+        }
+    ],
+    "applications": {
+        "statamic": {
+            "type": "php",
+            "limits": {
+                "requests": 50,
+                "timeout": 40
+            },
+
+            "processes": {
+                "max": 20,
+                "spare": 10,
+                "idle_timeout": 20
+            },
+
+            "user": "web",
+            "group": "web",
+            "root": "/var/www/html/public",
+            "script": "index.php"
+        }
+    }
+}

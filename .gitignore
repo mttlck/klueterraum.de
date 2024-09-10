@@ -4,12 +4,9 @@
 
 /public/build
 /public/hot
-/public/storage
-/public/vendor/statamic
+/public/vendor
 
 /storage/*.key
-
-
 
 auth.json
 npm-debug.log

@@ -1,14 +1,26 @@
 services:
-    analytics:
-
-    analytics_events:
-        image: clickhouse/clickhouse-server:24.3.3.102-alpine
-
-    tiles:
-        image: ghcr.io/maplibre/martin:v0.13.0
+    web:
+        build:
+            context: .
+            args:
+                RUN_UID: ${RUN_UID:-1033}
+                RUN_GID: ${RUN_GID:-1033}
+            target: base
         restart: unless-stopped
-
-    database:
+        ports:
+            - '127.0.0.1:8000:8000'
+        volumes:
+            - storage:/var/www/html
+        environment:
+            APP_NAME: "Klueterraum Papenburg e.V."
+            APP_KEY: ${APP_KEY}
+            APP_URL: ${APP_URL:-https://klueterraum.de}
+            APP_DEBUG: ${APP_DEBUG:-false}
+            APP_ENV: ${APP_ENV:-production}
+            DISCORD_BOT_TOKEN: ${DISCORD_BOT_TOKEN}
+            DISCORD_GUILD: ${DISCORD_GUILD:-1038463931359957112}
+            LOG_LEVEL: ${LOG_LEVEL:-error}
+            LOG_STACK: 'stdout,stderr'
 
 volumes:
-    mbtiles:
+    storage:

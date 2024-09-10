@@ -7,8 +7,6 @@ services:
                 RUN_GID: ${RUN_GID:-1033}
             target: base
         restart: unless-stopped
-        ports:
-            - '127.0.0.1:8000:8000'
         volumes:
             - storage:/var/www/html
         environment:

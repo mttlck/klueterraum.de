@@ -2,13 +2,13 @@ FROM unit:php8.3 AS base
 
 COPY --from=composer:2 /usr/bin/composer /usr/bin/composer
 
-COPY --from=mlocati/php-extension-installer:latest /usr/bin/install-php-extensions /usr/local/bin/
-RUN install-php-extensions opcache intl zip bcmath gd exif pcntl sockets Imagick/imagick@master
-
 RUN apt update \
     && curl -fsSL https://deb.nodesource.com/setup_22.x | bash - \
     && apt install nodejs p7zip-full -y \
     && apt purge -y --auto-remove
+
+COPY --from=mlocati/php-extension-installer:latest /usr/bin/install-php-extensions /usr/local/bin/
+RUN install-php-extensions opcache intl zip bcmath exif pcntl sockets Imagick/imagick@master
 
 COPY ./docker/docker.php.ini $PHP_INI_DIR/conf.d/
 COPY ./docker/config.json /docker-entrypoint.d/

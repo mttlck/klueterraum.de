@@ -8,7 +8,8 @@ services:
             target: base
         restart: unless-stopped
         volumes:
-            - storage:/var/www/html
+            - storage:/var/www/html/storage
+            - assets:/var/www/html/assets
         environment:
             APP_NAME: "Klueterraum Papenburg e.V."
             APP_KEY: ${APP_KEY}
@@ -22,3 +23,4 @@ services:
 
 volumes:
     storage:
+    assets:

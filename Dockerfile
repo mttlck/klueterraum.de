@@ -35,6 +35,6 @@ RUN composer install --no-interaction --no-dev --classmap-authoritative --no-scr
     && php artisan package:discover \
     && composer clear-cache
 
-RUN npm ci --no-cache && npm run build && rm -rf node_modules
+RUN npm ci && npm run build && npm cache clear --force && rm -rf node_modules
 
 USER root

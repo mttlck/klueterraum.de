@@ -25,7 +25,7 @@ USER web
 
 COPY --chown=web:web . .
 
-RUN composer install --no-interaction --no-dev --classmap-authoritative \
+RUN composer install --no-interaction --no-dev --classmap-authoritative --no-scripts \
     && php artisan storage:link \
     && php artisan event:clear \
     && php artisan view:clear \
